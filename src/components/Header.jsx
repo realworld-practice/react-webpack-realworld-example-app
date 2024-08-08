@@ -9,7 +9,7 @@ export default function Header() {
         </Link>
         <ul class="nav navbar-nav pull-xs-right">
           <li class="nav-item">
-            <Link class="nav-link active" to="/">
+            <Link class="nav-link" to="/">
               Home
             </Link>
           </li>
