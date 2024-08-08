@@ -1,25 +1,27 @@
-export default function HeaderLayout() {
+import { Link } from "react-router-dom";
+
+export default function Header() {
   return (
     <nav class="navbar navbar-light">
       <div class="container">
-        <a class="navbar-brand" href="/">
+        <Link class="navbar-brand" href="/">
           conduit
-        </a>
+        </Link>
         <ul class="nav navbar-nav pull-xs-right">
           <li class="nav-item">
-            <a class="nav-link active" href="/">
+            <Link class="nav-link active" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">
+            <Link to="/login" class="nav-link">
               Sign in
-            </a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/register">
+            <Link class="nav-link" to="/register">
               Sign up
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
