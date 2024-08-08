@@ -15,6 +15,14 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (values.email === "") {
+      setError("이메일을 입력해주세요.");
+      return;
+    } else if (values.password === "") {
+      setError("비밀번호를 입력해주세요.");
+      return;
+    }
+
     try {
       const res = await postLogin({
         email: values.email,
