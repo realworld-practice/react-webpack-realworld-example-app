@@ -1,4 +1,20 @@
+import { useState } from "react";
+
 export default function LoginPage() {
+  const [values, setValues] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(values);
+  };
+
   return (
     <div className="auth-page">
       <div className="container page">
@@ -13,11 +29,13 @@ export default function LoginPage() {
               <li>That email is already taken</li>
             </ul>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <fieldset className="form-group">
                 <input
                   className="form-control form-control-lg"
                   type="text"
+                  name="email"
+                  onChange={handleChange}
                   placeholder="Email"
                 />
               </fieldset>
@@ -25,6 +43,8 @@ export default function LoginPage() {
                 <input
                   className="form-control form-control-lg"
                   type="password"
+                  name="password"
+                  onChange={handleChange}
                   placeholder="Password"
                 />
               </fieldset>
