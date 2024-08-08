@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { postLogin } from "../api/auth";
 
 export default function LoginPage() {
   const [values, setValues] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setValues({
@@ -10,9 +12,18 @@ export default function LoginPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+
+    try {
+      const res = await postLogin({
+        email: values.email,
+        password: values.password,
+      });
+    } catch (error) {
+      console.log(error);
+      setError("존재하지 않는 아이디/비밀번호 입니다.");
+    }
   };
 
   return (
@@ -26,7 +37,7 @@ export default function LoginPage() {
             </p>
 
             <ul className="error-messages">
-              <li>That email is already taken</li>
+              <li>{error}</li>
             </ul>
 
             <form onSubmit={handleSubmit}>
